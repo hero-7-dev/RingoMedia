@@ -1,0 +1,24 @@
+﻿@model YourNamespace.Models.Department
+
+<h1>@Model.Name</h1>
+<img src="@Model.Logo" alt="Logo" style="width: 100px; height: 100px;" />
+<h2>Sub-Departments</h2>
+<ul>
+    @foreach (var subDepartment in Model.SubDepartments)
+    {
+        <li>@subDepartment.Name</li>
+    }
+</ul>
+
+<h2>Parent Departments</h2>
+<ul>
+    @if (Model.ParentDepartment != null)
+    {
+        var parent = Model.ParentDepartment;
+        while (parent != null)
+        {
+            <li>@parent.Name</li>
+            parent = parent.ParentDepartment;
+        }
+    }
+</ul>

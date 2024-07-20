@@ -1,0 +1,29 @@
+﻿@model IEnumerable<RingoMedia.Models.Department>
+
+<h1>Departments</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Logo</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td><img src="@item.Logo" alt="Logo" style="width: 50px; height: 50px;" /></td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = item.DepartmentId })">Details</a>
+                    <a href="@Url.Action("Edit", new { id = item.DepartmentId })">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = item.DepartmentId })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>

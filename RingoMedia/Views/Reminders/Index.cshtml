@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RingoMedia.Models.Reminder>
+
+<h1>Reminders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Reminder Time</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.ReminderTime)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = item.ReminderId })">Details</a>
+                    <a href="@Url.Action("Edit", new { id = item.ReminderId })">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = item.ReminderId })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
